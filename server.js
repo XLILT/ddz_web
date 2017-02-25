@@ -10,9 +10,8 @@ var http = require("http"),
 
 http.createServer(function (req, res) {
     if(req.url === "/login") {
-        res.writeHead(200, {"Content-Type": "text/json"});
-        res.end("{result: ok}");
-
+        login(req, res);
+        
         return;
     }
 
@@ -63,3 +62,9 @@ http.createServer(function (req, res) {
 }).listen(PORT, HOST);
 
 console.log(`Server running at http://${HOST}:${PORT}/`);
+
+function login(req, res) {    
+    res.writeHead(200, {"Content-Type": "text/json"});
+
+    res.end(console.log(req));
+}

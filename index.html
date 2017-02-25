@@ -20,7 +20,7 @@
 </div>
 <div class="content">
     <div class="login-box">
-        <form action="/login" method="post">
+        <form action method="post">
             <p class="login-p">
                 <span class="ui-icon ui-icon-person"></span>
                 <input type="text" placeholder="输入昵称" name="username">
@@ -29,7 +29,7 @@
 
             <p class="login-p">
                 <span class="ui-icon ui-icon-locked"></span>
-                <input type="text" placeholder="输入密码" name="passwd">
+                <input type="password" placeholder="输入密码" name="passwd">
             </p>
             <p class="login-tip login-cheak-passwd"></p>
 
@@ -44,7 +44,9 @@
 </div>
 
 <script type="text/javascript" src="lib/jquery/jquery-1.12.0.js"></script>
+<script type="text/javascript" src="lib/jquery/jquery.md5.js"></script>
 <script type="text/javascript" src="lib/jquery/jquery-ui-1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 </body>
 </html>
