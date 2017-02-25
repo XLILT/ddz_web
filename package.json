@@ -8,6 +8,8 @@
 	},
 	"license": "GUN",
 	"dependencies": {
+        "ejs": "",
+        "body-parser": "",
 		"express": "4.x"
 	}
 }
