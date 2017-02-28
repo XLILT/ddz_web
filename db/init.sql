@@ -8,8 +8,8 @@ DROP TABLE IF EXISTS `user`;
 
 CREATE TABLE IF NOT EXISTS `user`(
     id int not null auto_increment,
-    name char(20) not null,
-    passwd char(20) not null,
+    name char(64) not null,
+    passwd char(128) not null,
     sex int not null default '0',
 
     primary key(id),

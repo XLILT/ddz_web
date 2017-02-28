@@ -3,6 +3,7 @@
 var ejs = require("ejs");
 var bodyParser = require("body-parser");
 var express = require("express");
+var Login = require('./login');
 
 var app = module.exports = express();
 
@@ -18,12 +19,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.post('/login', function(req, res) {
-    res.setHeader('Content-Type', 'text/plain');
-    res.write('you posted:\n');
-    console.log(req.body);
-    res.end(req.body.passwd);
+	login(req, res);
 });
 
 app.listen(PORT, HOST);
 console.log(`server run at ${HOST}:${PORT}`)
+
+function login(req, res) {
+	var login = new Login(req, res);
+	login.try_login();
+}
 
