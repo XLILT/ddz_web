@@ -8,10 +8,18 @@ $(document).ready(function(){
 			dataType: 'text',
 			async: false,
 			success: function(data){
-				console.log(data);
+				var data_obj = JSON.parse(data);
+				if(data_obj.result === 0){
+					$('.register-box .register-result span').html("恭喜你，注册成功!请前往登陆。");
+				}
+				else {
+					$('.register-box .register-result span').html("抱歉，注册失败!");
+					console.log(data);
+				}
 			},
 			error: function(){
-				console.error("error");
+				$('.register-box .register-result span').html("抱歉，注册失败!");
+				console.error("ajax error");
 			}
 		});
 
