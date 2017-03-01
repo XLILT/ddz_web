@@ -9,13 +9,13 @@
 <div class="logo">
     <h1>
         <a href="index.html" title="xl斗地主">
-            <i class="iconfont logo-word">xl斗地主</i>
-            <i class="iconfont logo-url">xlddz.com</i>
+			<i class="iconfont logo-word">xl斗地主</i>
+			<i class="iconfont logo-url">xlddz.com</i>
         </a>
     </h1>
     <div class="login-register">
-        <i class="login">登陆&nbsp|</i>
-        <i class="register">&nbsp注册</i>
+        <a href="javascript:void(0)"><i class="login">登陆&nbsp|</i></a>
+        <a href="javascript:void(0)"><i class="register">&nbsp注册</i></a>
     </div>
 </div>
 <div class="content">
@@ -40,6 +40,23 @@
         </form>
     </div>
     <div class="register-box hide">
+		<form action method="post">
+			<p class="register-p">
+				<span class="ui-icon ui-icon-person"></span>
+				<input type="text" placeholder="输入昵称" name="username">
+            </p>
+            <p class="register-tip login-cheak-name"></p>
+
+            <p class="register-p">
+                <span class="ui-icon ui-icon-locked"></span>
+                <input type="password" placeholder="输入密码" name="passwd">
+            </p>
+            <p class="register-tip login-cheak-passwd"></p>
+
+            <div class="register-sbt">
+                <input class="register-box-sbt btn-sub" type="submit" value="注册">
+            </div>
+		</form>
     </div>
 </div>
 
@@ -48,5 +65,6 @@
 <script type="text/javascript" src="lib/jquery/jquery-ui-1.12.1/jquery-ui.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
 </body>
 </html>

@@ -12,18 +12,26 @@ function Login(req, res) {
 Login.prototype.try_login = function() {
 	var dao = new DAO;
 	dao.get_user_by_name(this.req.body.username, this);
-}
+};
 
-Login.prototype.on_db_result = function(db_result) {
+Login.prototype.on_db_result = function(err, rows) {
 	var result = {result: -1};
 
-	if(db_result.length === 1) {
-		if(db_result[0].passwd === this.req.body.passwd) {
-			result.result = 0;
-		}
+	if(err) {
+		result.msg = JSON.stringify(err);
 	}
+	else{
+		if(rows.length === 1) {
+			if(rows[0].passwd === this.req.body.passwd) {
+				result.result = 0;
+			}
+		}
+		else if(rows.length === 0) {
+			result.msg = "username not existed.";
+		}	
+	}	
 
 	this.res.setHeader('Content-Type', 'application/json');
 	this.res.end(JSON.stringify(result));
-}
+};
 

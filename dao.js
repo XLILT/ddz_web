@@ -9,7 +9,6 @@ function UserDAO() {
 	this.port = 3306;
 	this.user = 'vod_web';
 	this.passwd = 'qwe123';
-	this.db = 'xl_ddz';
 }
 
 UserDAO.prototype.get_user_by_name = function(name, handler) {
@@ -17,51 +16,34 @@ UserDAO.prototype.get_user_by_name = function(name, handler) {
 		host: this.host,
 		user: this.user,
 		password: this.passwd,
-		database: this.db
 	});
 
 	conn.connect();
 
-	var user = [];
 	conn.query('select name, passwd from xl_ddz.user where name = ?', [name], function(err, rows, fields) {
-		if(err) {
-			console.error(err);
-			return false;
-		}
-
-		if(rows.length === 1) {
-			user = rows;
+		if(handler) {
+			handler.on_db_result(err, rows, fields);
 		}
 		
 		conn.end();
-
-		if(handler) {
-			handler.on_db_result(rows);
-		}
 	});
 }
 
-UserDAO.prototype.add_user = function(name, passwd) {
+UserDAO.prototype.add_user = function(name, passwd, handler) {
 	var conn = mysql.createConnection({
 		host: this.host,
 		user: this.user,
 		password: this.passwd,
-		database: this.db
-
 	});
 
 	conn.connect();
 
 	conn.query('insert into xl_ddz.user(name, passwd) values(?, ?)', [name, passwd], function(err, result) {
-		if(err) {
-			console.error(err);
-			return false;
+		if(handler){
+			handler.on_db_result(err, result);
 		}
-
-		console.log(result);
+	
+		conn.end();
 	});
-
-	conn.end();
-	return true;
 }
 

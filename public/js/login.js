@@ -6,7 +6,7 @@ $(document).ready(function() {
             contentType : 'application/x-www-form-urlencoded',  
             //contentType : 'application/json',  
             url : '/login',
-            data: encrypt_form($(this)),
+            data: encrypt_login_form($(this)),
             dataType : 'text',
             //同步
             async : false,  
@@ -22,7 +22,7 @@ $(document).ready(function() {
 	});
 });
 	
-function encrypt_form(form) {
+function encrypt_login_form(form) {
 	var form_arr = form.serializeArray();
 	form_arr.forEach(function(data) {
 		if(data.name === "passwd") {
@@ -34,3 +34,4 @@ function encrypt_form(form) {
     //var ret_str = JSON.stringify(form_arr);
 	return ret_str;
 }
+
