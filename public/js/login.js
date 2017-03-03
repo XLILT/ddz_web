@@ -11,7 +11,13 @@ $(document).ready(function() {
             //同步
             async : false,  
             success : function(data) {  
-                console.log(data);
+				var data_obj = JSON.parse(data);
+				if(data_obj.result === 0){
+					window.location.href = '/game';
+				}
+				else{
+					console.log(data);
+				}
             },  
             error : function() {  
                 console.error("error");

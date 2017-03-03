@@ -10,7 +10,11 @@
 	"dependencies": {
         "ejs": "",
         "body-parser": "",
+		"cookie-parser": "",
+		"cookie-session": "",
+		"less-middleware": "",
 		"express": "4.x",
-		"mysql": ""
+		"mysql": "",
+		"fs":""
 	}
 }

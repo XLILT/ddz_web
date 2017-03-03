@@ -24,6 +24,8 @@ Login.prototype.on_db_result = function(err, rows) {
 		if(rows.length === 1) {
 			if(rows[0].passwd === this.req.body.passwd) {
 				result.result = 0;
+				this.req.session.is_login = 1;
+				this.req.session.uid = rows[0].id;
 			}
 		}
 		else if(rows.length === 0) {
